@@ -1,0 +1,10 @@
+[workspace]
+members = ["win-service" ]
+
+[package]
+name = "service-scheduler"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+planif = { git = "https://github.com/radkum/planif.git" }

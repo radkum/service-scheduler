@@ -1,0 +1,26 @@
+[env.development]
+TARGET_PATH = "target\\debug"
+SERVICE_PACKAGE = "win-service"
+
+[env.production]
+TARGET_PATH = "target\\release"
+BUILD_FLAGS = "--release"
+
+[tasks.format]
+command = "cargo"
+args = ["fmt"]
+toolchain = "nightly"
+
+#build task manager
+[tasks.build-service]
+dependencies = []
+script = [
+    "cargo b --package %SERVICE_PACKAGE% %BUILD_FLAGS%"
+]
+
+#build task manager
+[tasks.build-tm]
+dependencies = ["build-service"]
+script = [
+    "cargo b %BUILD_FLAGS%"
+]
